@@ -69,11 +69,11 @@ migrate-db: ## Run phinx migration script
 rollback-db: ## Rollback phinx db migration
 	@$(CMD_WEB_BASH_AS_ROOT) -c 'vendor/bin/phinx rollback'
 
-seed-db: ## Rollback phinx db migration
+seed-db: ## Run databse seeds
 	@$(CMD_WEB_BASH_AS_ROOT) -c 'vendor/bin/phinx seed:run'
 
 test-phpstan: ## Run PHP Stan
-	vendor/bin/phpstan analyse --memory-limit=256M --level max src tests --error-format=junit --no-interaction > build/logs/php/phpstan.xml
+	$(CMD_WEB_BASH_AS_ROOT) -c 'vendor/bin/phpstan analyse --memory-limit=256M --level max src tests --error-format=junit --no-interaction > build/logs/php/phpstan.xml'
 
 test-phpcs: ## Run PHP Code Sniffer
 	$(CMD_WEB_BASH_AS_ROOT) -c 'vendor/bin/phpcs --standard=phpcs.xml.dist -p --report=summary --report=junit --report-junit=build/logs/php/phpcs.xml'
