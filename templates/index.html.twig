@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cushon</title>
+    </head>
+    <body>
+        {% for type, flash_messages in app.session.flashBag.all %}
+            {% for flash_message in flash_messages %}
+                <div class="alert alert-{{ type }}">
+                    <span class="msg-box-icon"></span>{{ flash_message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <div>Hello, {{ name }} {{ last_name }}</div>
+
+        {% block body %}
+
+            {{ form(form) }}
+
+        {% endblock %}
+    </body>
+</html>
