@@ -1,0 +1,163 @@
+# config/validator/payload.yaml
+App\Entity\Payment:
+  properties:
+    createdDateTime:
+      - NotNull: ~
+    billingAddressLine1:
+      - NotNull: ~
+    billingAddressLine2:
+      - NotNull: ~
+    billingAddressLine3:
+      - NotNull: ~
+    billingAddressLine4:
+      - NotNull: ~
+    billingCity:
+      - NotNull: ~
+    billingCounty:
+      - Length:
+          max: 50
+    billingCountryCode:
+      - NotNull: ~
+      - Length:
+          max: 3
+    billingPostCode:
+      - NotNull: ~
+      - Length:
+          max: 9
+    clientReference:
+      - NotNull: ~
+      - Length:
+          max: 25
+    checkoutId:
+      - Length:
+          max: 25
+    customerId:
+      - Length:
+          max: 25
+    authenticationId:
+      - Length:
+          max: 25
+    cardId:
+      - Length:
+          max: 25
+    logThirdPartyIdForCreateCustomerAndCheckoutService:
+      - Length:
+          max: 11
+    logThirdPartyIdForGetAuthRecordDetailsService:
+      - Length:
+          max: 11
+    templateId:
+      - Length:
+          max: 50
+    brand:
+      - Length:
+          max: 50
+    reasonDescription:
+      - Length:
+          max: 100
+    cardHolderInfo:
+      - Length:
+          max: 100
+    transactionId3ds:
+      - Length:
+          max: 100
+    acsTransactionId:
+      - Length:
+          max: 100
+    acsRenderingType:
+      - Length:
+          max: 100
+    authenticationType:
+      - Length:
+          max: 100
+    challengeRequired:
+      - Length:
+          max: 10
+    statusReason:
+      - Length:
+          max: 10
+    scaExemption:
+      - Length:
+          max: 100
+    bin:
+      - Length:
+          max: 20
+    lastFour:
+      - Length:
+          max: 10
+    cardExpiryMM:
+      - Length:
+          max: 10
+    cardExpiryYY:
+      - Length:
+          max: 10
+    cardType:
+      - Length:
+          max: 25
+    payerAuthenticationResponse:
+      - Length:
+          max: 10
+    authenticationECI:
+      - Length:
+          max: 10
+    issuerAuthenticationValue:
+      - Length:
+          max: 100
+    payerAuthRequestId:
+      - Length:
+          max: 100
+    authoriseCode:
+      - Length:
+          max: 100
+    threeDsServerTransactionId:
+      - Length:
+          max: 100
+    cv2ValidationResult:
+      - Length:
+          max: 30
+    postCodeValidationResult:
+      - Length:
+          max: 30
+    addressValidationResult:
+      - Length:
+          max: 30
+    amountInPence:
+      - NotNull: ~
+      - Length:
+          max: 11
+    returnToClientUrl:
+      - Length:
+          max: 255
+    protocol3ds:
+      - Length:
+          max: 20
+    authenticator:
+      - Length:
+          max: 30
+    acsUrl:
+      - Length:
+          max: 255
+    enrolled:
+      - Length:
+          max: 10
+    payload:
+      - Length:
+          max: 350
+    signatureVerification:
+      - Length:
+          max: 10
+    errorDescription:
+      - Length:
+          max: 255
+    errorNumber:
+      - Length:
+          max: 20
+    threeDsOrderId:
+      - Length:
+          max: 30
+    reasonCode:
+      - Length:
+          max: 255
+    token:
+      - Length:
+          max: 30

@@ -1,0 +1,11 @@
+# config/validator/billingAddress.yaml
+App\Entity\Payload\BillingAddress:
+  properties:
+    addressLine1:
+      - NotBlank: ~
+    city:
+      - NotBlank: ~
+    postcode:
+      - NotBlank: ~
+    countryCode:
+      - NotBlank: ~

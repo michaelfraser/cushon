@@ -1,0 +1,7 @@
+# config/validator/shippingAddress.yaml
+App\Entity\Payload\ShippingAddress:
+  properties:
+    postcode:
+      - NotBlank: ~
+    countryCode:
+      - NotBlank: ~

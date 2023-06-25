@@ -1,0 +1,44 @@
+version: '3.4'
+services:
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${WRITE_DATABASE_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ~
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    ports:
+      - '${DOCKER_DB_PORT}:3306'
+    networks:
+      - development
+  web:
+    build:
+      context: ./docker/web
+      args:
+        - http_proxy
+        - https_proxy
+    ports:
+      - '${DOCKER_PORT}:80'
+      - '${DOCKER_SSL_PORT}:443'
+      - "${DOCKER_WEB_SERVICE_SSH_PORT}:22"
+    volumes:
+      - './:/var/www/demo/live:cached'
+      - '~/.composer/cache:/root/.composer/cache'
+    tmpfs:
+      - /var/www/demo/live/var/cache
+      - /var/www/demo/live/var/log
+    depends_on:
+      - database
+    environment:
+      PHP_XDEBUG_ENABLED: '${PHP_XDEBUG_ENABLED}'
+      XDEBUG_CONFIG: remote_host=docker.for.mac.localhost
+    expose:
+      - '9000'
+    networks:
+      development:
+        aliases:
+          - www.demo.webdev998
+
+networks:
+  development:

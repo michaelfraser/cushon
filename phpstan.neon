@@ -1,0 +1,10 @@
+includes:
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-symfony/rules.neon
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    bootstrapFiles: # Workaround to https://github.com/phpstan/phpstan/issues/694
+        - vendor/bin/.phpunit/phpunit-9.5-0/vendor/autoload.php
+    editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'

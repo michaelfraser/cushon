@@ -1,0 +1,17 @@
+monolog:
+    handlers:
+        error_filter:
+            type: filter
+            max_level: warning
+            handler: warning_handler
+
+        # filter below error level to the specified file
+        warning_handler:
+            type: stream
+            path: '/var/log/dcg/info.log'
+
+        # filter error level and above to the specified file
+        error_handler:
+            type: stream
+            level: error
+            path: '/var/log/httpd/error_log'

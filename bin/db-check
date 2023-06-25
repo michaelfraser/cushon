@@ -1,0 +1,46 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+use Symfony\Component\Dotenv;
+
+require dirname(__DIR__).'/config/bootstrap.php';
+
+$dotenv = new Dotenv\Dotenv();
+$dotenv->loadEnv(dirname(__DIR__). '/.env');
+
+echo "Waiting for MySQL DB container\nConnecting";
+
+$env = getenv();
+
+$user = $env['DB_USER'];
+$password = $env['WRITE_DATABASE_PASSWORD'];
+$charset = 'utf8mb4';
+$dsn = sprintf(
+    'mysql:dbname=%s;host=%s;port=%d;charset=%s',
+    $env['DB_NAME'],
+    $env['WRITE_DATABASE_HOST'],
+    $env['WRITE_DATABASE_PORT'],
+    $charset
+);
+
+$attempts = 0;
+
+do {
+    $attempts++;
+    sleep(1);
+    $error = false;
+    try {
+        $db = new PDO($dsn, $user, $password);
+    } catch (PDOException $e) {
+        $error = true;
+    }
+    echo '.';
+} while ($error && $attempts < 60);
+
+echo "\n";
+
+if ($error) {
+    echo "MySQL DB container connection timed out\n";
+    exit(1);
+}

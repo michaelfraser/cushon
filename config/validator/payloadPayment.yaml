@@ -1,0 +1,37 @@
+# config/validator/payloadPayment.yaml
+App\Entity\Payload\Payment:
+  properties:
+    templateId:
+      - NotBlank: ~
+    clientReference:
+      - NotBlank: ~
+      - Length:
+          max: 50
+    title:
+      - NotBlank: ~
+      - Length:
+          max: 10
+    email:
+      - NotBlank: ~
+    firstName:
+      - NotBlank: ~
+      - Length:
+          max: 25
+    lastName:
+      - NotBlank: ~
+      - Length:
+          max: 60
+    amountInPence:
+      - NotBlank: ~
+    currencyCode:
+      - NotBlank: ~
+      - Length:
+          max: 3
+    billingAddress:
+      - NotBlank: ~
+      - Valid: ~
+    shippingAddress:
+      - NotBlank: ~
+      - Valid: ~
+    processTransaction:
+      - NotNull: ~

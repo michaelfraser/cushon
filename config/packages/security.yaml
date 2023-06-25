@@ -1,0 +1,5 @@
+# config/packages/security.yaml
+security:
+  firewalls:
+    main:
+      anonymous: ~
