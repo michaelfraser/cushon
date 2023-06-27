@@ -10,9 +10,7 @@
 
 ## Getting started
 1. Add `www.demo.webdev998 www.demo.webdev998` to your hosts file for `127.0.0.1`.
-
-**To use this application **
-1. There is a simple `make` command which will spin up the Docker development environment. Run `make clean` to build the environment.
+2. There is a simple `make` command which will spin up the Docker development environment. Run `make clean` to build the environment.
 
 If Docker complains about port clashes due to other services running on them, please edit them the in the `.env ` file
 and use alternative ones.
